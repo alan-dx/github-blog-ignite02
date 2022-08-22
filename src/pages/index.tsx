@@ -1,10 +1,19 @@
+import { Flex } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import { ResponsiveContainer } from '../components/containers/ResponsiveContainer'
+import { Header } from '../components/Header'
+import { Profile } from '../components/info/Profile'
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <>
+      <Header />
+      <ResponsiveContainer>
+        <Flex as="main" mt="-5rem">
+          <Profile />
+        </Flex>
+      </ResponsiveContainer>
+    </>
   )
 }
 
