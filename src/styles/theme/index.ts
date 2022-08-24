@@ -1,8 +1,10 @@
 import { ChakraTheme, extendTheme } from '@chakra-ui/react'
 
 import { colors } from './colors'
+import { components } from './components'
 import { fonts } from './fonts'
-import { global } from './styles'
+import { layerStyles } from './layerStyles'
+import { styles } from './styles'
 import { textStyles } from './textStyles'
 
 type DefaultTheme = Partial<ChakraTheme>
@@ -10,10 +12,10 @@ type DefaultTheme = Partial<ChakraTheme>
 const defaultTheme: DefaultTheme = {
   colors,
   fonts,
-  styles: {
-    global,
-  },
+  styles,
   textStyles,
+  layerStyles,
+  components,
 }
 
 const theme = extendTheme(defaultTheme)
