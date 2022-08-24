@@ -14,12 +14,7 @@ export const Profile: React.FC<IProfileProps> = ({ user }) => {
   return (
     <Flex
       as="section"
-      p="2rem"
-      gap="2rem"
-      bg="base.profile"
-      w="100%"
-      borderRadius="10px"
-      boxShadow="0px 2px 28px rgba(0,0,0,0.2)"
+      layerStyle="base-large-card"
     >
       <Image w="9.25rem" borderRadius="8px" src={user.avatar_url} alt="Foto de perfil do usuário" />
       <Flex flexDir="column" justify={{ base: `flex-start`, md: 'flex-end' }}>

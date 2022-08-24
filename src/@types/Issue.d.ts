@@ -8,4 +8,5 @@ export type Issue = {
   created_at: string
   body: string
   user: UserInfo
+  comments: string
 }
