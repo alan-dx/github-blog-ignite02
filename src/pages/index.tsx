@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import { UserInfo } from '../@types/UserInfo'
+import { Issue, UserInfo } from '../@types'
 import { ResponsiveContainer } from '../components/containers/ResponsiveContainer'
 import { Header } from '../components/Header'
 import { Profile } from '../components/info/Profile'
@@ -10,20 +10,22 @@ import { api } from '../lib/axios'
 
 interface IHomeProps {
   userInfo: UserInfo
+  issuesList: Issue[]
 }
 
 export async function getStaticProps() {
   const userData = await api.get(`/users/rocketseat-education`)
-  console.log(`teste`)
+  const issuesList = await api.get(`/repos/rocketseat-education/reactjs-github-blog-challenge/issues`)
 
   return {
     props: {
-      userInfo: userData.data
+      userInfo: userData.data,
+      issuesList: issuesList.data
     }
   }
 }
 
-const Home: NextPage<IHomeProps> = ({ userInfo }) => {
+const Home: NextPage<IHomeProps> = ({ userInfo, issuesList }) => {
   return (
     <>
       <Header />
@@ -31,7 +33,7 @@ const Home: NextPage<IHomeProps> = ({ userInfo }) => {
         <Flex as="main" mt="-5rem" flexDir="column">
           <Profile user={userInfo} />
           <SearchIssue />
-          <IssuesList />
+          <IssuesList issues={issuesList} />
         </Flex>
       </ResponsiveContainer>
     </>

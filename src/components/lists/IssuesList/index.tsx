@@ -1,7 +1,13 @@
 import { Flex } from '@chakra-ui/react';
+import React from 'react';
+import { Issue } from '../../../@types';
 import { IssueCard } from '../../cards/IssueCard';
 
-export function IssuesList() {
+interface IIssuesListProps {
+  issues: Issue[]
+}
+
+export const IssuesList: React.FC<IIssuesListProps> = ({ issues }) => {
   return (
     <Flex
       as="section"
@@ -9,11 +15,11 @@ export function IssuesList() {
       gap="1rem"
       wrap="wrap"
     >
-      <IssueCard />
-      <IssueCard />
-      <IssueCard />
-      <IssueCard />
-      <IssueCard />
+      {
+        issues.map(issue => (
+          <IssueCard key={issue.id} issue={issue} />
+        ))
+      }
     </Flex>
   );
 }
