@@ -4,6 +4,7 @@ import { UserInfo } from '../@types/UserInfo'
 import { ResponsiveContainer } from '../components/containers/ResponsiveContainer'
 import { Header } from '../components/Header'
 import { Profile } from '../components/info/Profile'
+import { IssuesList } from '../components/lists/IssuesList'
 import { SearchIssue } from '../components/utility/SearchIssue'
 import { api } from '../lib/axios'
 
@@ -30,6 +31,7 @@ const Home: NextPage<IHomeProps> = ({ userInfo }) => {
         <Flex as="main" mt="-5rem" flexDir="column">
           <Profile user={userInfo} />
           <SearchIssue />
+          <IssuesList />
         </Flex>
       </ResponsiveContainer>
     </>

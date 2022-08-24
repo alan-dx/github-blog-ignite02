@@ -7,7 +7,7 @@ interface IResponsiveContainer {
 
 export function ResponsiveContainer({ children }: IResponsiveContainer) {
   return (
-    <Container maxW="55rem" >
+    <Container maxW="55rem" pb="14rem">
       {children}
     </Container>
   );

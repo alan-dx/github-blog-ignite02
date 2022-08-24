@@ -1,7 +1,7 @@
-import { Input as ChakraInput } from '@chakra-ui/react';
+import { Input as ChakraInput, InputProps } from '@chakra-ui/react';
 
-export function Input() {
+export function Input({ ...rest }: InputProps) {
   return (
-    <ChakraInput placeholder='Buscar conteúdo' layerStyle="input-primary" borderColor='base.border' />
+    <ChakraInput layerStyle="input-primary" borderColor='base.border' {...rest} />
   );
 }
