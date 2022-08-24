@@ -1,9 +1,7 @@
 import { Flex } from '@chakra-ui/react'
-import type { NextPage } from 'next'
-import { Issue, UserInfo } from '../@types'
-import { ResponsiveContainer } from '../components/containers/ResponsiveContainer'
-import { Header } from '../components/Header'
+import { Issue, NextPageWithLayout, UserInfo } from '../@types'
 import { Profile } from '../components/info/Profile'
+import { PrimaryLayout } from '../components/layouts/PrimaryLayout'
 import { IssuesList } from '../components/lists/IssuesList'
 import { SearchIssue } from '../components/utility/SearchIssue'
 import { api } from '../lib/axios'
@@ -25,19 +23,18 @@ export async function getStaticProps() {
   }
 }
 
-const Home: NextPage<IHomeProps> = ({ userInfo, issuesList }) => {
+const Home: NextPageWithLayout<IHomeProps> = ({ userInfo, issuesList }) => {
   return (
-    <>
-      <Header />
-      <ResponsiveContainer>
-        <Flex as="main" mt="-5rem" flexDir="column">
-          <Profile user={userInfo} />
-          <SearchIssue />
-          <IssuesList issues={issuesList} />
-        </Flex>
-      </ResponsiveContainer>
-    </>
+    <Flex as="main" mt="-5rem" flexDir="column">
+      <Profile user={userInfo} />
+      <SearchIssue />
+      <IssuesList issues={issuesList} />
+    </Flex>
   )
+}
+
+Home.getLayout = (page) => {
+  return <PrimaryLayout>{page}</PrimaryLayout>
 }
 
 export default Home
