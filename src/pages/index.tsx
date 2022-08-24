@@ -4,6 +4,7 @@ import { UserInfo } from '../@types/UserInfo'
 import { ResponsiveContainer } from '../components/containers/ResponsiveContainer'
 import { Header } from '../components/Header'
 import { Profile } from '../components/info/Profile'
+import { SearchIssue } from '../components/utility/SearchIssue'
 import { api } from '../lib/axios'
 
 interface IHomeProps {
@@ -26,8 +27,9 @@ const Home: NextPage<IHomeProps> = ({ userInfo }) => {
     <>
       <Header />
       <ResponsiveContainer>
-        <Flex as="main" mt="-5rem">
+        <Flex as="main" mt="-5rem" flexDir="column">
           <Profile user={userInfo} />
+          <SearchIssue />
         </Flex>
       </ResponsiveContainer>
     </>
