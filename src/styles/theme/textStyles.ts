@@ -21,7 +21,7 @@ export const textStyles = {
     fontWeight: 400,
   },
   link: {
-    fontSize: '0.875rem',
+    fontSize: '0.87rem',
     fontWeight: 700,
   },
 }

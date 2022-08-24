@@ -1,6 +1,7 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon, Image, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
-import { FaBuilding, FaGithub, FaUserFriends } from "react-icons/fa";
+import { FaBuilding, FaExternalLinkAlt, FaGithub, FaUserFriends } from "react-icons/fa";
 import { UserInfo } from "../../../@types/UserInfo";
 import { InfoBadge } from "../InfoBadge";
 
@@ -12,8 +13,9 @@ export const Profile: React.FC<IProfileProps> = ({ user }) => {
 
   return (
     <Flex
-      gap="2rem"
+      as="section"
       p="2rem"
+      gap="2rem"
       bg="base.profile"
       w="100%"
       borderRadius="10px"
@@ -21,7 +23,28 @@ export const Profile: React.FC<IProfileProps> = ({ user }) => {
     >
       <Image w="9.25rem" borderRadius="8px" src={user.avatar_url} alt="Foto de perfil do usuário" />
       <Flex flexDir="column" justify={{ base: `flex-start`, md: 'flex-end' }}>
-        <Text as="h1" textStyle={["title-s", null, "title-l"]} color="base-title" >{user.name}</Text>
+        <Flex as="header" align="center" justify="space-between" >
+          <Text as="h1" textStyle={["title-s", null, "title-l"]} color="base-title" >{user.name}</Text>
+          <Box
+            borderBottomWidth='1px'
+            borderBottomColor="transparent"
+            _hover={{ borderBottomColor: 'blue.500', cursor: 'pointer' }}
+          >
+            <Link href={user.html_url} passHref>
+              <Text
+                as="a"
+                textStyle="link"
+                target="_blank"
+                rel="noopener noreferrer"
+                color="blue.500"
+
+              >
+                GITHUB
+                <Icon ml="2" as={FaExternalLinkAlt} />
+              </Text>
+            </Link>
+          </Box>
+        </Flex>
         <Text display={{ base: `none`, md: 'block' }} textStyle="text-m" color="base.text" mt="0.625rem">
           {user.bio}
         </Text>
