@@ -2,6 +2,7 @@ import { Flex, Text } from '@chakra-ui/react';
 import { formatDistanceToNow } from 'date-fns';
 import ptBr from 'date-fns/locale/pt-BR';
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Issue } from '../../../@types';
 
 interface IIssueCardProps {
@@ -26,11 +27,14 @@ export const IssueCard: React.FC<IIssueCardProps> = ({ issue }) => {
       <Flex>
         <Text as="strong" flex="1" mr="1rem" display="block" textStyle="title-m" color="base.title">{issue.title}</Text>
         <Text as="small" whiteSpace="nowrap" textStyle="text-s" color="base.span" mt="0.3rem">{formatDistanceToNow(new Date(issue.created_at), {
-          locale: ptBr
+          locale: ptBr,
+          addSuffix: true
         })}</Text>
       </Flex>
       <Text textStyle="text-m" color="base.text" mt="1.25rem" noOfLines={4}>
-        Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available
+        <ReactMarkdown>
+          {issue.body.substring(2, issue.body.indexOf('.**') + 1)}
+        </ReactMarkdown>
       </Text>
     </Flex>
   );
