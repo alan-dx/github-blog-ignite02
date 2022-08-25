@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
-import { NextPageWithLayout } from '../@types'
-import theme from '../styles/theme'
+import { NextPageWithLayout } from '~/@types'
+import theme from '~/styles/theme'
 
 interface IAppPropsWithLayout extends AppProps {
   Component: NextPageWithLayout

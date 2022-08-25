@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveContainer } from '../containers/ResponsiveContainer';
+import { ResponsiveContainer } from '~/components/containers/ResponsiveContainer';
 import { Header } from '../Header';
 
 interface IPrimaryLayout {

@@ -1,10 +1,10 @@
 import { Flex } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import React from "react"
-import { Issue, NextPageWithLayout } from "../../@types"
-import { PostTitle } from "../../components/info/PostTitle"
-import { PrimaryLayout } from "../../components/layouts/PrimaryLayout"
-import { api } from "../../lib/axios"
+import { Issue, NextPageWithLayout } from "~/@types"
+import { PostTitle } from "~/components/info/PostTitle"
+import { PrimaryLayout } from "~/components/layouts/PrimaryLayout"
+import { api } from "~/lib/axios"
 
 const Post: NextPageWithLayout = () => {
   const [post, setPost] = React.useState({} as Issue)

@@ -1,5 +1,5 @@
 import { Flex, Text } from '@chakra-ui/react';
-import { Input } from '../../inputs/Input';
+import { Input } from '~/components/inputs/Input';
 
 export function SearchIssue() {
   return (

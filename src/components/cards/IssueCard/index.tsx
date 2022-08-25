@@ -3,7 +3,7 @@ import { formatDistanceToNow } from 'date-fns';
 import ptBr from 'date-fns/locale/pt-BR';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { Issue } from '../../../@types';
+import { Issue } from '~/@types';
 
 interface IIssueCardProps {
   issue: Issue

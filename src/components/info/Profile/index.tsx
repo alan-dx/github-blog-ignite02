@@ -2,7 +2,7 @@ import { Box, Flex, Icon, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { FaBuilding, FaExternalLinkAlt, FaGithub, FaUserFriends } from "react-icons/fa";
-import { UserInfo } from "../../../@types/UserInfo";
+import { UserInfo } from "~/@types/UserInfo";
 import { InfoBadge } from "../InfoBadge";
 
 interface IProfileProps {

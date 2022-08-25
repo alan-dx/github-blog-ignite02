@@ -4,7 +4,7 @@ import ptBr from 'date-fns/locale/pt-BR';
 import Link from "next/link";
 import React from "react";
 import { FaCalendar, FaChevronLeft, FaComment, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { Issue } from "../../../@types";
+import { Issue } from "~/@types";
 import { InfoBadge } from "../InfoBadge";
 
 interface IProfileProps {

@@ -1,10 +1,10 @@
 import { Flex } from '@chakra-ui/react'
-import { Issue, NextPageWithLayout, UserInfo } from '../@types'
-import { Profile } from '../components/info/Profile'
-import { PrimaryLayout } from '../components/layouts/PrimaryLayout'
-import { IssuesList } from '../components/lists/IssuesList'
-import { SearchIssue } from '../components/utility/SearchIssue'
-import { api } from '../lib/axios'
+import { Issue, NextPageWithLayout, UserInfo } from '~/@types'
+import { Profile } from '~/components/info/Profile'
+import { PrimaryLayout } from '~/components/layouts/PrimaryLayout'
+import { IssuesList } from '~/components/lists/IssuesList'
+import { SearchIssue } from '~/components/utility/SearchIssue'
+import { api } from '~/lib/axios'
 
 interface IHomeProps {
   userInfo: UserInfo

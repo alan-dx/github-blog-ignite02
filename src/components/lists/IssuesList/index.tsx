@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
-import { Issue } from '../../../@types';
-import { IssueCard } from '../../cards/IssueCard';
+import { Issue } from '~/@types';
+import { IssueCard } from '~/components/cards/IssueCard';
 
 interface IIssuesListProps {
   issues: Issue[]
