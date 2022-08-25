@@ -1,4 +1,5 @@
 import { Flex } from '@chakra-ui/react'
+import React from 'react'
 import { Issue, NextPageWithLayout, UserInfo } from '~/@types'
 import { Profile } from '~/components/info/Profile'
 import { PrimaryLayout } from '~/components/layouts/PrimaryLayout'
@@ -24,11 +25,28 @@ export async function getStaticProps() {
 }
 
 const Home: NextPageWithLayout<IHomeProps> = ({ userInfo, issuesList }) => {
+  const [issues, setIssues] = React.useState(issuesList)
+
+  async function handleFilterIssues(searchTerm: string) {
+    if (!searchTerm) {
+      return
+    }
+    const searchParams = encodeURI(searchTerm)
+
+    try {
+      const response = await api.get(`/search/issues?q=${searchParams}repo:rocketseat-education/reactjs-github-blog-challenge`)
+      setIssues(response.data.items)
+    } catch (error) {
+      alert('Não foi possível realizar a busca, por favor tente novamente em instantes!')
+    }
+
+  }
+
   return (
     <Flex as="main" mt="-5rem" flexDir="column">
       <Profile user={userInfo} />
-      <SearchIssue />
-      <IssuesList issues={issuesList} />
+      <SearchIssue handleFilterIssues={handleFilterIssues} searchCount={issues.length} />
+      <IssuesList issues={issues} />
     </Flex>
   )
 }
