@@ -1,34 +1,57 @@
-import { Flex } from "@chakra-ui/react"
-import { useRouter } from "next/router"
-import React from "react"
+import { Box, Flex } from "@chakra-ui/react"
+import axios, { AxiosResponse } from "axios"
+import { GetServerSidePropsContext } from "next"
+import ReactMarkdown from "react-markdown"
 import { Issue, NextPageWithLayout } from "~/@types"
 import { PostTitle } from "~/components/info/PostTitle"
 import { PrimaryLayout } from "~/components/layouts/PrimaryLayout"
 import { api } from "~/lib/axios"
 
-const Post: NextPageWithLayout = () => {
-  const [post, setPost] = React.useState({} as Issue)
+interface IPost {
+  postInfo: Issue
+}
 
-  const router = useRouter()
-  const { number } = router.query
 
-  console.log(post)
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query } = context
 
-  React.useEffect(() => {
-    async function loadPostData() {
-      const postInfo = await api.get(`/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${number}`)
-      setPost(postInfo.data)
+  let postInfo = {} as AxiosResponse
+
+  await api.get(`/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${query.number}`).then((response) => {
+    postInfo = response
+  }).catch(err => {
+    postInfo = err
+  })
+
+  if (axios.isAxiosError(postInfo)) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
     }
+  }
 
-    if (number) {
-      loadPostData()
+  return {
+    props: {
+      postInfo: postInfo.data || null
     }
+  }
 
-  }, [number])
+}
 
+const Post: NextPageWithLayout<IPost> = ({ postInfo }) => {
+  if (!postInfo) {
+    return null
+  }
   return (
     <Flex as="main" mt="-5rem" flexDir="column">
-      <PostTitle issue={post} />
+      <PostTitle issue={postInfo} />
+      <Box p="2.25rem 2rem" >
+        <ReactMarkdown>
+          {postInfo.body}
+        </ReactMarkdown>
+      </Box>
     </Flex>
   )
 }
