@@ -22,6 +22,8 @@ export const IssueCard: React.FC<IIssueCardProps> = ({ issue }) => {
       bg="base.post"
       flexDir="column"
       maxW={{ base: "100%", lg: "26rem" }}
+      flex={1}
+      h="15.625rem"
       borderRadius="10px"
       p="2rem"
       borderWidth="2px"
@@ -33,7 +35,7 @@ export const IssueCard: React.FC<IIssueCardProps> = ({ issue }) => {
       onClick={handleNavigateToPostPage}
     >
       <Flex>
-        <Text as="strong" flex="1" mr="1rem" display="block" textStyle="title-m" color="base.title">{issue.title}</Text>
+        <Text as="strong" flex="1" width="100%" mr="1rem" display="block" textStyle="title-m" color="base.title">{issue.title}</Text>
         <Text as="small" whiteSpace="nowrap" textStyle="text-s" color="base.span" mt="0.3rem">{formatDistanceToNow(new Date(issue.created_at), {
           locale: ptBr,
           addSuffix: true

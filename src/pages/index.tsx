@@ -13,8 +13,8 @@ interface IHomeProps {
 }
 
 export async function getStaticProps() {
-  const userData = await api.get(`/users/rocketseat-education`)
-  const issuesList = await api.get(`/repos/rocketseat-education/reactjs-github-blog-challenge/issues`)
+  const userData = await api.get(`/users/alan-dx`)
+  const issuesList = await api.get(`/repos/alan-dx/github-blog-ignite02/issues`)
 
   return {
     props: {
@@ -34,7 +34,7 @@ const Home: NextPageWithLayout<IHomeProps> = ({ userInfo, issuesList }) => {
     const searchParams = encodeURI(searchTerm)
 
     try {
-      const response = await api.get(`/search/issues?q=${searchParams}repo:rocketseat-education/reactjs-github-blog-challenge`)
+      const response = await api.get(`/search/issues?q=${searchParams}repo:alan-dx/github-blog-ignite02`)
       setIssues(response.data.items)
     } catch (error) {
       alert('Não foi possível realizar a busca, por favor tente novamente em instantes!')

@@ -44,7 +44,7 @@ export const PostTitle: React.FC<IProfileProps> = ({ issue }) => {
             borderBottomColor="transparent"
             _hover={{ borderBottomColor: 'blue.500', cursor: 'pointer' }}
           >
-            <Link href={issue.url} passHref>
+            <Link href={issue.html_url} passHref>
               <Text
                 as="a"
                 textStyle="link"

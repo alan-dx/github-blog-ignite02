@@ -17,7 +17,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   let postInfo = {} as AxiosResponse
 
-  await api.get(`/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${query.number}`).then((response) => {
+  await api.get(`/repos/alan-dx/github-blog-ignite02/issues/${query.number}`).then((response) => {
     postInfo = response
   }).catch(err => {
     postInfo = err
